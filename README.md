@@ -1,6 +1,12 @@
 ## Hi there 👋
 
-<!--
+<!--cd your-react-app-folder
+git init
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+
 **majeedai/Majeedai** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
