@@ -9,7 +9,7 @@ const translations = {
     result: "Suggested Specialty: ",
   },
   ar: {
-    title: "ماجد AI - دليلك الطبي",
+    title: "مجيد AI - دليلك الطبي",
     placeholder: "صف الأعراض التي تعاني منها...",
     button: "اعرف التخصص",
     general: "الطب العام",
