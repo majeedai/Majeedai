@@ -58,3 +58,16 @@ body[dir="rtl"] {
   direction: rtl;
   text-align: right;
 }
+
+.language-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.language-buttons button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
