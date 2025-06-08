@@ -1,4 +1,3 @@
-// api/ask.js
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -6,7 +5,7 @@ export default async function handler(req, res) {
 
   const { symptoms } = req.body;
 
-  const prompt = `You are a medical assistant. Based on the user's symptoms, suggest the most appropriate medical specialty. The output should only be the specialty name.\n\nSymptoms: ${symptoms}\nSpecialty:`;
+  const prompt = `You are a medical assistant. Based on the user's symptoms, suggest the most appropriate medical specialty. Respond with only the specialty name.\n\nSymptoms: ${symptoms}`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/completions', {
@@ -24,11 +23,15 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+
+    // ✅ DEBUG LOGGING
+    console.log("Raw OpenAI response:", JSON.stringify(data));
+
     const specialty = data.choices?.[0]?.text?.trim();
 
-    res.status(200).json({ specialty });
+    res.status(200).json({ specialty: specialty || "No result returned" });
   } catch (error) {
-    console.error(error);
+    console.error("OpenAI request failed:", error);
     res.status(500).json({ error: 'OpenAI request failed' });
   }
 }
