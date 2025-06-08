@@ -45,3 +45,16 @@ async function suggestSpecialty() {
   }
 }
 
+function switchLanguage(lang) {
+  if (lang === 'ar') {
+    document.getElementById('title').textContent = 'مجيدAI - ساعدني أجد الطبيب المناسب';
+    document.getElementById('symptomsInput').placeholder = 'صف أعراضك...';
+    document.getElementById('findBtn').textContent = 'ابحث عن التخصص';
+    document.getElementById('resultLabel').textContent = 'التخصص المقترح:';
+  } else {
+    document.getElementById('title').textContent = 'MajeedAI - Find the Right Doctor';
+    document.getElementById('symptomsInput').placeholder = 'Describe your symptoms...';
+    document.getElementById('findBtn').textContent = 'Find Specialty';
+    document.getElementById('resultLabel').textContent = 'Suggested Specialty:';
+  }
+}

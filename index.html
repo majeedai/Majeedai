@@ -10,12 +10,14 @@
   <div class="container" id="app">
     <div class="lang-switch">
       <button onclick="switchLanguage('en')">🇬🇧 English</button>
-      <button onclick="switchLanguage('ar')">🇸🇦 العربية</button>
-    </div>
-    <h1 id="title">MajeedAI - Find the Right Doctor</h1>
-    <input type="text" id="symptomsInput" placeholder="Describe your symptoms..." />
-    <button id="findButton" onclick="suggestSpecialty()">Find Specialty</button>
-    <div id="result"></div>
+<button onclick="switchLanguage('ar')">🇸🇦 العربية</button>
+
+<h1 id="title">MajeedAI - Find the Right Doctor</h1>
+<input type="text" id="symptomsInput" placeholder="Describe your symptoms..." />
+<button id="findBtn" onclick="suggestSpecialty()">Find Specialty</button>
+<div id="resultLabel">Suggested Specialty:</div>
+<div id="result"></div>
+
   </div>
   <script src="script.js" defer></script>
 </body>
