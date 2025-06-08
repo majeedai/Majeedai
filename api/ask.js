@@ -15,31 +15,32 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'gpt-3.5-turbo', // ✅ switched to available model
         messages: [
-          {
-            role: 'system',
-            content: `You are a medical assistant. The user will describe symptoms. You must answer with only the most appropriate medical specialty name. No sentences. No explanation. Just ONE specialty name.`
-          },
-          {
-            role: 'user',
-            content: 'I have chest pain and shortness of breath'
-          },
-          {
-            role: 'assistant',
-            content: 'Cardiologist'
-          },
-          {
-            role: 'user',
-            content: 'My skin is very itchy and red'
-          },
-          {
-            role: 'assistant',
-            content: 'Dermatologist'
-          },
-          {
-            role: 'user',
-            content: symptoms
-          }
-        ],
+  {
+    role: 'system',
+    content: `You are a bilingual medical assistant. The user may describe symptoms in either Arabic or English. Your job is to respond with only the most appropriate medical specialty — no explanation, no full sentence. Respond in the same language the user used.`
+  },
+  {
+    role: 'user',
+    content: 'I have chest pain and shortness of breath'
+  },
+  {
+    role: 'assistant',
+    content: 'Cardiologist'
+  },
+  {
+    role: 'user',
+    content: 'أعاني من ضيق في التنفس وألم في الصدر'
+  },
+  {
+    role: 'assistant',
+    content: 'طبيب قلب'
+  },
+  {
+    role: 'user',
+    content: symptoms
+  }
+]
+,
         temperature: 0.2,
         max_tokens: 50
       })
