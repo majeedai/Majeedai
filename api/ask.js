@@ -17,7 +17,23 @@ export default async function handler(req, res) {
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful medical assistant. Based on symptoms described by a user, suggest the most appropriate medical specialty. Respond only with the specialty name (e.g., Cardiologist, Dermatologist).'
+            content: `You are a medical assistant. The user will describe symptoms. You must answer with only the most appropriate medical specialty name. No sentences. No explanation. Just ONE specialty name.`
+          },
+          {
+            role: 'user',
+            content: 'I have chest pain and shortness of breath'
+          },
+          {
+            role: 'assistant',
+            content: 'Cardiologist'
+          },
+          {
+            role: 'user',
+            content: 'My skin is very itchy and red'
+          },
+          {
+            role: 'assistant',
+            content: 'Dermatologist'
           },
           {
             role: 'user',
@@ -29,8 +45,6 @@ export default async function handler(req, res) {
       })
     });
 
-    console.log("OpenAI response status:", response.status);
-
     const data = await response.json();
     console.log("OpenAI full response:", JSON.stringify(data));
 
@@ -39,8 +53,6 @@ export default async function handler(req, res) {
     res.status(200).json({ specialty: specialty || "No result returned" });
   } catch (error) {
     console.error("OpenAI API Error:", error);
-    res
-      .status(500)
-      .json({ error: 'AI request failed', message: error.message || 'Unknown error' });
+    res.status(500).json({ error: 'AI request failed', message: error.message || 'Unknown error' });
   }
 }
