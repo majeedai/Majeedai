@@ -41,21 +41,21 @@ export default async function handler(req, res) {
           }
         ],
         temperature: 0.2,
-        max_tokens: 50,
-        stop: ['\n']
+        max_tokens: 50
       })
     });
 
     const data = await response.json();
-    console.log("OpenAI response:", data);
 
-    // Defensive cleaning
+    // ✅ Log the entire raw response
+    console.log("🔍 Raw OpenAI API Response:", JSON.stringify(data, null, 2));
+
     const raw = data.choices?.[0]?.message?.content || '';
-    const specialty = raw.split('\n')[0].trim();
+    const specialty = raw.trim().split('\n')[0];
 
     res.status(200).json({ specialty: specialty || "No result returned" });
   } catch (error) {
-    console.error("OpenAI API Error:", error);
+    console.error("🔥 OpenAI API Error:", error);
     res.status(500).json({ error: 'AI request failed', message: error.message || 'Unknown error' });
   }
 }
