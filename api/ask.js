@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         messages: [
   {
     role: 'system',
-    content: `You are a bilingual medical assistant. The user may describe symptoms in either Arabic or English. Your job is to respond with only the most appropriate medical specialty — no explanation, no full sentence. Respond in the same language the user used.`
+    content: `You are a bilingual medical assistant. The user will describe symptoms in either Arabic or English. Respond ONLY with the most appropriate medical specialty — in the SAME language the user used. No sentences. No explanation. Just the specialty name.`
   },
   {
     role: 'user',
@@ -29,17 +29,34 @@ export default async function handler(req, res) {
   },
   {
     role: 'user',
-    content: 'أعاني من ضيق في التنفس وألم في الصدر'
+    content: 'I am losing hair and my skin is itchy'
   },
   {
     role: 'assistant',
-    content: 'طبيب قلب'
+    content: 'Dermatologist'
+  },
+  {
+    role: 'user',
+    content: 'أعاني من ألم في الخصيتين'
+  },
+  {
+    role: 'assistant',
+    content: 'طبيب مسالك بولية'
+  },
+  {
+    role: 'user',
+    content: 'أشعر بقلق دائم ولا أستطيع النوم'
+  },
+  {
+    role: 'assistant',
+    content: 'طبيب نفسي'
   },
   {
     role: 'user',
     content: symptoms
   }
 ]
+
 ,
         temperature: 0.2,
         max_tokens: 50
