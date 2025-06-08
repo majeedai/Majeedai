@@ -7,12 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>MajeedAI - Find the Right Doctor</h1>
+  <div class="container" id="app">
+    <div class="lang-switch">
+      <button onclick="switchLanguage('en')">🇬🇧 English</button>
+      <button onclick="switchLanguage('ar')">🇸🇦 العربية</button>
+    </div>
+    <h1 id="title">MajeedAI - Find the Right Doctor</h1>
     <input type="text" id="symptomsInput" placeholder="Describe your symptoms..." />
-    <button onclick="suggestSpecialty()">Find Specialty</button>
+    <button id="findButton" onclick="suggestSpecialty()">Find Specialty</button>
     <div id="result"></div>
   </div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
+
