@@ -47,7 +47,7 @@ async function suggestSpecialty() {
 
 function switchLanguage(lang) {
   if (lang === 'ar') {
-    document.getElementById('title').textContent = 'مجيدAI - ساعدني أجد الطبيب المناسب';
+    document.getElementById('title').textContent = 'د. مجيد (ذكاء اصطناعي) - ساعدني أجد الطبيب المناسب';
     document.getElementById('symptomsInput').placeholder = 'صف أعراضك...';
     document.getElementById('findBtn').textContent = 'ابحث عن التخصص';
     document.getElementById('resultLabel').textContent = 'التخصص المقترح:';
