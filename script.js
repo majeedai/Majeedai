@@ -1,3 +1,5 @@
+let currentLanguage = 'en';
+
 console.log("script.js loaded");
 
 
@@ -25,7 +27,8 @@ async function suggestSpecialty() {
 async function suggestSpecialty() {
   const input = document.getElementById('symptomsInput').value;
   const resultDiv = document.getElementById('result');
-  resultDiv.textContent = "Thinking...";
+  resultDiv.textContent = currentLanguage === 'ar' ? "جاري التفكير..." : "Thinking...";
+
 
   try {
     const response = await fetch('/api/ask', {
@@ -46,8 +49,10 @@ async function suggestSpecialty() {
 }
 
 function switchLanguage(lang) {
+  currentLanguage = lang;
+
   if (lang === 'ar') {
-    document.getElementById('title').textContent = 'د. مجيد (ذكاء اصطناعي) - ساعدني أجد الطبيب المناسب';
+    document.getElementById('title').textContent = 'مجيدAI - ساعدني أجد الطبيب المناسب';
     document.getElementById('symptomsInput').placeholder = 'صف أعراضك...';
     document.getElementById('findBtn').textContent = 'ابحث عن التخصص';
     document.getElementById('resultLabel').textContent = 'التخصص المقترح:';
@@ -58,3 +63,4 @@ function switchLanguage(lang) {
     document.getElementById('resultLabel').textContent = 'Suggested Specialty:';
   }
 }
+
