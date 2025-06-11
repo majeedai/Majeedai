@@ -14,59 +14,55 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'gpt-4',  // ✅ switched to available model
-        messages: [
+       messages: [
   {
     role: 'system',
-    content: `You are a bilingual medical assistant. The user will describe symptoms in either Arabic or English. Your job is to respond with ONLY the most appropriate medical **subspecialty** name — in the SAME language the user used. Do not explain. Do not answer with full sentences. Only return the subspecialty name.`
+    content: `You are a bilingual medical assistant. The user will describe symptoms in Arabic or English. You must reply with BOTH the most appropriate general medical specialty and subspecialty — in the SAME language as the user. Use this format:
+    
+English:
+Specialty: [general specialty]
+Subspecialty: [subspecialty]
+
+Arabic:
+التخصص: [التخصص العام]
+التخصص الدقيق: [التخصص الدقيق]
+
+Keep it short. Do not write anything else. No explanations.`
   },
 
   // English examples
   { role: 'user', content: 'I have chest pain and shortness of breath' },
-  { role: 'assistant', content: 'Cardiology' },
+  { role: 'assistant', content: 'Specialty: Internal medicine\nSubspecialty: Cardiology' },
 
-  { role: 'user', content: 'I feel bloated and have stomach pain after eating' },
-  { role: 'assistant', content: 'Gastroenterology' },
+  { role: 'user', content: 'I have itchy skin and hair loss' },
+  { role: 'assistant', content: 'Specialty: Dermatology\nSubspecialty: Alopecia and hair disease' },
 
-  { role: 'user', content: 'I’m feeling sad and can’t sleep for weeks' },
-  { role: 'assistant', content: 'Adult psychiatry' },
+  { role: 'user', content: 'I’m depressed and can’t sleep' },
+  { role: 'assistant', content: 'Specialty: Psychiatry\nSubspecialty: Adult psychiatry' },
 
   { role: 'user', content: 'My child has epilepsy' },
-  { role: 'assistant', content: 'Pediatric neurology' },
+  { role: 'assistant', content: 'Specialty: Neurology\nSubspecialty: Pediatric neurology' },
 
-  { role: 'user', content: 'I have frequent urination and blood in urine' },
-  { role: 'assistant', content: 'Urology' },
-
-  { role: 'user', content: 'I have blurry vision and flashes of light' },
-  { role: 'assistant', content: 'Medical retina' },
-
-  { role: 'user', content: 'My skin is itchy and red after laser treatment' },
-  { role: 'assistant', content: 'Lasers (dermatology)' },
-
-  { role: 'user', content: 'I’m experiencing hair thinning and scalp patches' },
-  { role: 'assistant', content: 'Alopecia and hair disease' },
+  { role: 'user', content: 'I see floaters and flashing lights in my vision' },
+  { role: 'assistant', content: 'Specialty: Ophthalmology\nSubspecialty: Medical retina' },
 
   // Arabic examples
-  { role: 'user', content: 'أعاني من فقدان التوازن ودوخة مستمرة' },
-  { role: 'assistant', content: 'أمراض الحركة' },
+  { role: 'user', content: 'أعاني من ارتفاع ضغط الدم وألم في الصدر' },
+  { role: 'assistant', content: 'التخصص: الباطنة\nالتخصص الدقيق: القلب' },
 
-  { role: 'user', content: 'طفلي يعاني من تشنجات متكررة' },
-  { role: 'assistant', content: 'أعصاب الأطفال' },
-
-  { role: 'user', content: 'أعاني من التهاب مفاصل مزمن' },
-  { role: 'assistant', content: 'الروماتيزم' },
-
-  { role: 'user', content: 'أشكو من عدم الإنجاب منذ سنوات' },
-  { role: 'assistant', content: 'عقم الرجال' },
+  { role: 'user', content: 'أشعر بحكة وتساقط في الشعر' },
+  { role: 'assistant', content: 'التخصص: الجلدية\nالتخصص الدقيق: أمراض الشعر والصلع' },
 
   { role: 'user', content: 'أعاني من الحول منذ الطفولة' },
-  { role: 'assistant', content: 'طبيب الحول' },
+  { role: 'assistant', content: 'التخصص: العيون\nالتخصص الدقيق: الحول عند الكبار' },
 
-  { role: 'user', content: 'أشعر بألم حاد في الشبكية وفقدان جزء من الرؤية' },
-  { role: 'assistant', content: 'جراحة الشبكية' },
+  { role: 'user', content: 'طفلي يعاني من نوبات تشنج' },
+  { role: 'assistant', content: 'التخصص: الأعصاب\nالتخصص الدقيق: أعصاب الأطفال' },
 
-  // Final user input placeholder
+  // Final user input
   { role: 'user', content: symptoms }
 ]
+
 
 
 ,
