@@ -17,7 +17,8 @@ async function suggestSpecialty() {
     });
 
     const data = await res.json();
-    resultDiv.textContent = `Suggested Specialty: ${data.specialty}`;
+    resultDiv.innerHTML = data.specialty.replace(/\n/g, "<br>");
+
   } catch (err) {
     resultDiv.textContent = "Error contacting AI.";
   }
