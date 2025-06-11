@@ -15,6 +15,11 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'gpt-4',  // ✅ switched to available model
        messages: [
+
+         {
+    role: 'system',
+    content: `You are a bilingual medical assistant. The user will describe symptoms in Arabic or English... [full prompt continues here]`
+  },
   {
     content: `You are a bilingual medical assistant. The user will describe symptoms in Arabic or English. You must reply with BOTH the most appropriate general specialty and subspecialty — in the SAME language the user used.
 
