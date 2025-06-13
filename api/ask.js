@@ -12,12 +12,13 @@ export default async function handler(req, res) {
         model: 'gpt-4',
         messages: [
           {
-            role: 'system',
-            content: `You are a bilingual medical assistant. The user will describe symptoms in Arabic or English. You must reply with BOTH the most appropriate general specialty and subspecialty — in the SAME language the user used.
+  role: 'system',
+  content: `You are a bilingual medical assistant. The user will describe symptoms in either Arabic or English.
 
-✅ Always include both lines, even if the specialty and subspecialty are the same.
-
-🧾 Format:
+❗️IMPORTANT:
+- If the user asks in Arabic, you must reply in Arabic.
+- If the user asks in English, you must reply in English.
+- Use this strict format:
 
 English:
 Specialty: [General specialty]
@@ -27,8 +28,9 @@ Arabic:
 التخصص: [التخصص العام]
 التخصص الدقيق: [التخصص الدقيق]
 
-No sentences. No explanation. Only the two lines.`
-          },
+Never explain or translate. Always match the user's language exactly.`
+}
+,
           {
             role: 'user',
             content: 'I have chest pain and shortness of breath'
@@ -86,6 +88,16 @@ No sentences. No explanation. Only the two lines.`
   role: 'assistant',
   content: 'التخصص: الجلدية\nالتخصص الدقيق: أمراض الجلدية'
 }
+,
+{
+  role: 'user',
+  content: 'أعاني من ألم في أسفل الظهر'
+},
+{
+  role: 'assistant',
+  content: 'التخصص: العظام\nالتخصص الدقيق: العمود الفقري'
+}
+,
 
         ]
       })
