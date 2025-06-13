@@ -40,7 +40,7 @@ No sentences. No explanation. Only the two lines.`
           {
             role: 'user',
             content: symptoms
-          }
+          },
 
           {
   role: 'user',
