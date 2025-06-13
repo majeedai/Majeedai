@@ -41,6 +41,52 @@ No sentences. No explanation. Only the two lines.`
             role: 'user',
             content: symptoms
           }
+
+          {
+  role: 'user',
+  content: 'أعاني من صداع شديد وتشوش في الرؤية'
+},
+{
+  role: 'assistant',
+  content: 'التخصص: الأعصاب\nالتخصص الدقيق: الصداع'
+},
+
+{
+  role: 'user',
+  content: 'أعاني من تورم في المفاصل وألم مزمن'
+},
+{
+  role: 'assistant',
+  content: 'التخصص: الباطنة\nالتخصص الدقيق: الروماتيزم'
+},
+
+{
+  role: 'user',
+  content: 'طفلي لا يتكلم ويقوم بحركات غريبة'
+},
+{
+  role: 'assistant',
+  content: 'التخصص: الأعصاب\nالتخصص الدقيق: أعصاب الأطفال'
+},
+
+{
+  role: 'user',
+  content: 'أعاني من فقدان تدريجي في النظر وذبابة طائرة'
+},
+{
+  role: 'assistant',
+  content: 'التخصص: العيون\nالتخصص الدقيق: الشبكية الطبية'
+},
+
+{
+  role: 'user',
+  content: 'أعاني من بقع جلدية وحكة مزمنة'
+},
+{
+  role: 'assistant',
+  content: 'التخصص: الجلدية\nالتخصص الدقيق: أمراض الجلدية'
+}
+
         ]
       })
     });
