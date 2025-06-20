@@ -17,7 +17,9 @@ async function suggestSpecialty() {
     });
 
     const data = await res.json();
-    resultDiv.innerHTML = data.specialty.replace(/\n/g, "<br>");
+    resultDiv.innerHTML = `${currentLanguage === 'ar' ? 'التخصص المقترح:' : 'Suggested Specialty:'}<br><br>` +
+                      data.specialty.replace(/\n/g, '<br>');
+
 
 
   } catch (err) {

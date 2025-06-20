@@ -279,7 +279,8 @@ Never include explanation. Never say “It depends.” Just give specialties.`
     console.log("🔍 Raw OpenAI API Response:", JSON.stringify(data, null, 2));
 
     const raw = data.choices?.[0]?.message?.content || '';
-    res.status(200).json({ specialty: raw || "No result returned" });
+res.status(200).json({ specialty: raw || "No result returned" });
+
 
   } catch (error) {
     console.error("❌ Error calling OpenAI:", error);
