@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   try {
     const systemMessage =
       language === 'ar'
-        ? 'أنت مساعد طبي محترف. قم بتحليل الشكوى التي يكتبها المريض وحدد التخصص الطبي العام والتخصص الدقيق المناسبين. أجب فقط بالتخصصات دون أي شرح.'
-        : 'You are a professional medical assistant. Analyze the patient’s complaint and suggest the most appropriate general and subspecialty. Respond only with specialties and nothing else.';
+        ? 'أنت مساعد طبي محترف. قم بتحليل الشكوى التي يكتبها المريض وحدد التخصص الطبي العام والتخصص الدقيق المناسبين. إذا كانت هناك أكثر من احتمال، فاذكر جميع الخيارات الطبية المرتبطة بشكل دقيق، وبدون شرح أو تعليق إضافي.'
+        : 'You are a professional medical assistant. Analyze the patient’s complaint and suggest the most appropriate general and subspecialty. If more than one possibility exists, mention all possible medical specialty options. Do not provide any explanation.';
 
     const userMessage =
       language === 'ar'
@@ -48,4 +48,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'AI request failed', message: error.message });
   }
 }
-
