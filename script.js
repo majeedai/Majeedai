@@ -36,12 +36,14 @@ async function suggestSpecialty() {
 
   try {
     const response = await fetch('/api/ask', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ symptoms: input })
-    });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    prompt: userInput,         // should be a string
+    language: currentLanguage  // should be either 'en' or 'ar'
+  }),
+});
+
 
     const data = await response.json();
     console.log("Response from API:", data);  // 👈 Add this
