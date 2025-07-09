@@ -4,7 +4,7 @@ console.log("script.js loaded");
 
 
 async function suggestSpecialty() {
-  const userInput = document.getElementById('input-box').value; // replace with your input ID
+  const userInput = document.getElementById('symptomsInput').value;
 
   if (!userInput || userInput.trim() === '') {
     resultDiv.textContent = 'Please enter a valid complaint.';
